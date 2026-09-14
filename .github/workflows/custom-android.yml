@@ -162,11 +162,11 @@ jobs:
                  '        if relay_server.is_empty() {\n'
                  '            relay_server = crate::increase_port(&self.host, 1);\n'
                  '        }')
-          new = ('        if relay_server.is_empty() {\n'
+          new = ('        if relay_server.is_empty() || relay_server.starts_with("0.0.0.0") {\n'
                  '            relay_server = provided_by_rendezvous_server;\n'
                  '        }\n'
                  '        if relay_server.is_empty() || relay_server.starts_with("0.0.0.0") {\n'
-                 '            relay_server = crate::increase_port(&self.host, 1);\n'
+                 '            relay_server = "168nas.cn:21117".to_owned();\n'
                  '        }')
           must(old in s, 'relay fn pattern not found')
           s = s.replace(old, new)
@@ -499,11 +499,11 @@ jobs:
                  '        if relay_server.is_empty() {\n'
                  '            relay_server = crate::increase_port(&self.host, 1);\n'
                  '        }')
-          new = ('        if relay_server.is_empty() {\n'
+          new = ('        if relay_server.is_empty() || relay_server.starts_with("0.0.0.0") {\n'
                  '            relay_server = provided_by_rendezvous_server;\n'
                  '        }\n'
                  '        if relay_server.is_empty() || relay_server.starts_with("0.0.0.0") {\n'
-                 '            relay_server = crate::increase_port(&self.host, 1);\n'
+                 '            relay_server = "168nas.cn:21117".to_owned();\n'
                  '        }')
           must(old in s, 'relay fn pattern not found')
           s = s.replace(old, new)
